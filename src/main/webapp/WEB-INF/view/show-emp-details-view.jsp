@@ -11,6 +11,10 @@
     <title>Details</title>
 </head>
 <body>
-<h2>Dear ${nameAttribute}, you are welcome!</h2>
+<h2>Dear ${employee.name}, you are welcome!</h2>
+
+<p>Your surname: ${employee.surname}</p>
+<p>Your salary: ${employee.salary}</p>
+<p>Your department: ${employee.department}</p>
 </body>
 </html>
