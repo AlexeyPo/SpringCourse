@@ -1,12 +1,22 @@
 package org.alexey.spring.mvc;
 
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
 
+    @Size(min = 2, message = "must be min 2 symbols")
     private String name;
+    @NotBlank(message = "surname is required field")
     private String surname;
+    @Min(value = 500)
+    @Max(value = 1000)
     private int salary;
     private String department;
     private String carBrand;
