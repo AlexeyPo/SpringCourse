@@ -1,10 +1,12 @@
 package org.alexey.spring.mvc;
 
 
+import org.alexey.spring.mvc.validation.CheckEmail;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +15,10 @@ public class Employee {
 
     @Size(min = 2, message = "must be min 2 symbols")
     private String name;
+
     @NotBlank(message = "surname is required field")
     private String surname;
+
     @Min(value = 500)
     @Max(value = 1000)
     private int salary;
@@ -24,6 +28,12 @@ public class Employee {
     private Map<String, String> carBrands;
     private String[] languages;
     private Map<String, String> languageList;
+
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "Please use template XXX-XX-XX")
+    private String phoneNumber;
+
+    @CheckEmail
+    private String email;
 
     public Employee() {
         departments = new HashMap<>();
@@ -112,6 +122,22 @@ public class Employee {
 
     public void setLanguageList(Map<String, String> languageList) {
         this.languageList = languageList;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
